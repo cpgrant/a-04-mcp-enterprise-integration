@@ -1,0 +1,45 @@
+flowchart TB
+
+    subgraph Z1["Trust Zone 1 — AI Application"]
+        AGENT["AI Agent"]
+        CLIENT["MCP Client"]
+        AGENT --> CLIENT
+    end
+
+    subgraph Z2["Trust Zone 2 — Integration Service"]
+        GATEWAY["MCP Server"]
+        AUTHN["Client Identity Verification"]
+        AUTHZ["Tool Authorization"]
+        VALIDATION["Input Validation"]
+        AUDIT["Audit & Observability"]
+
+        GATEWAY --> AUTHN
+        AUTHN --> AUTHZ
+        AUTHZ --> VALIDATION
+        AUTHZ --> AUDIT
+        VALIDATION --> AUDIT
+    end
+
+    subgraph Z3["Trust Zone 3 — Enterprise Systems"]
+        ADAPTER["Enterprise Adapter"]
+        DB[("Enterprise Database")]
+        API["Enterprise API"]
+
+        ADAPTER --> DB
+        ADAPTER --> API
+    end
+
+    CLIENT -->|"MCP requests"| GATEWAY
+    VALIDATION -->|"Authorized operations"| ADAPTER
+    ADAPTER -->|"Results"| GATEWAY
+    GATEWAY -->|"MCP responses"| CLIENT
+
+    classDef agent fill:#dbeafe,stroke:#2563eb,color:#172554
+    classDef security fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    classDef enterprise fill:#dcfce7,stroke:#16a34a,color:#14532d
+    classDef integration fill:#cffafe,stroke:#0891b2,color:#164e63
+
+    class AGENT,CLIENT agent
+    class AUTHN,AUTHZ,VALIDATION,AUDIT security
+    class DB,API,ADAPTER enterprise
+    class GATEWAY integration

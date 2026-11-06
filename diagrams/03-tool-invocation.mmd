@@ -1,0 +1,40 @@
+sequenceDiagram
+    autonumber
+
+    actor User
+    participant Agent as AI Agent
+    participant Client as MCP Client
+    participant Server as MCP Server
+    participant Policy as Policy Engine
+    participant Adapter as CRM Adapter
+    participant CRM as CRM Database
+    participant Audit as Audit Log
+
+    User->>Agent: Get customer C001
+
+    Agent->>Client: Discover available tools
+    Client->>Server: tools/list
+    Server-->>Client: Tool definitions
+
+    Agent->>Client: Call get_customer(C001)
+    Client->>Server: tools/call
+
+    Server->>Policy: Validate identity and permissions
+
+    alt Authorized
+        Policy-->>Server: Allow
+        Server->>Adapter: get_customer(C001)
+        Adapter->>CRM: Query customer
+        CRM-->>Adapter: Customer record
+        Adapter-->>Server: Validated customer data
+        Server->>Audit: Record successful operation
+        Server-->>Client: Tool result
+        Client-->>Agent: Customer data
+        Agent-->>User: Customer information
+    else Unauthorized
+        Policy-->>Server: Deny
+        Server->>Audit: Record denied operation
+        Server-->>Client: Authorization error
+        Client-->>Agent: Tool failure
+        Agent-->>User: Access denied
+    end

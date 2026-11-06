@@ -1,0 +1,35 @@
+flowchart TB
+
+    USER["Enterprise User"]
+    AGENT["AI Agent / Application<br/>AI-A02"]
+    KNOWLEDGE["Enterprise Knowledge<br/>AI-A03"]
+
+    subgraph A04["AI-A04 — MCP Enterprise Integration"]
+        CLIENT["MCP Client"]
+        SERVER["Enterprise MCP Server"]
+    end
+
+    subgraph ENTERPRISE["Enterprise Systems"]
+        ERP["ERP / Operations"]
+        CRM["CRM / Customers"]
+        FIN["Finance / Invoices"]
+        API["Enterprise APIs"]
+    end
+
+    USER --> AGENT
+    AGENT <--> KNOWLEDGE
+    AGENT --> CLIENT
+    CLIENT <-->|MCP Protocol| SERVER
+
+    SERVER --> ERP
+    SERVER --> CRM
+    SERVER --> FIN
+    SERVER --> API
+
+    classDef agent fill:#dbeafe,stroke:#2563eb,color:#172554
+    classDef mcp fill:#cffafe,stroke:#0891b2,color:#164e63
+    classDef enterprise fill:#dcfce7,stroke:#16a34a,color:#14532d
+
+    class AGENT,KNOWLEDGE agent
+    class CLIENT,SERVER mcp
+    class ERP,CRM,FIN,API enterprise

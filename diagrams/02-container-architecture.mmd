@@ -1,0 +1,54 @@
+flowchart TB
+
+    AGENT["Agent / MCP Host"]
+
+    subgraph CLIENT["MCP Client Layer"]
+        DISCOVERY["Tool Discovery"]
+        INVOCATION["Tool Invocation"]
+    end
+
+    subgraph SERVER["Enterprise MCP Server"]
+        REGISTRY["Tool & Resource Registry"]
+        POLICY["Authorization & Policy"]
+        EXECUTOR["Tool Executor"]
+        AUDIT["Audit & Observability"]
+    end
+
+    subgraph ADAPTERS["Enterprise Adapters"]
+        ERP["ERP Adapter"]
+        CRM["CRM Adapter"]
+        FIN["Finance Adapter"]
+    end
+
+    subgraph SYSTEMS["Data Sources"]
+        ERPDB[("ERP Data")]
+        CRMDB[("CRM Data")]
+        FINDB[("Finance Data")]
+    end
+
+    AGENT --> DISCOVERY
+    AGENT --> INVOCATION
+
+    DISCOVERY <--> REGISTRY
+    INVOCATION --> POLICY
+
+    POLICY -->|Allow| EXECUTOR
+    POLICY -->|Record decision| AUDIT
+
+    EXECUTOR --> ERP
+    EXECUTOR --> CRM
+    EXECUTOR --> FIN
+
+    ERP --> ERPDB
+    CRM --> CRMDB
+    FIN --> FINDB
+
+    EXECUTOR --> AUDIT
+
+    classDef security fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    classDef integration fill:#cffafe,stroke:#0891b2,color:#164e63
+    classDef data fill:#dcfce7,stroke:#16a34a,color:#14532d
+
+    class POLICY,AUDIT security
+    class REGISTRY,EXECUTOR,ERP,CRM,FIN integration
+    class ERPDB,CRMDB,FINDB data
