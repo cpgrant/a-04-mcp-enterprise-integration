@@ -1,3 +1,4 @@
+import os
 """Integration test for independent MCP client/server processes."""
 
 import asyncio
@@ -11,6 +12,10 @@ async def run_test():
     server = StdioServerParameters(
         command=sys.executable,
         args=["-m", "src.server.main"],
+        env={
+            **os.environ,
+            "AI_A04_ROLE": "reader",
+        },
     )
 
     async with Client(server) as client:

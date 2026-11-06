@@ -156,3 +156,54 @@ planned for Day 2.
 Christian Grant
 
 DeepAIMind — https://deepaimind.com
+
+---
+
+## Day 2 — Enterprise Integration
+
+Day 2 extends the MCP foundation with PostgreSQL-backed
+CRM, ERP and Finance capabilities.
+
+### Implementation highlights
+
+- PostgreSQL 17 with three enterprise schemas
+- Nine relational tables
+- 715 synthetic business records
+- CRM, ERP and Finance adapters
+- Nine registered MCP tools
+- Local role-based tool policy
+- Read-only database account
+- Structured audit events
+- 26 passing automated tests
+
+### Running the enterprise demonstration
+
+Start PostgreSQL:
+
+```bash
+docker compose up -d
+```
+
+Install the project:
+
+```bash
+python -m pip install -e ".[dev]"
+```
+
+Provision and seed the database using the SQL scripts
+in `database/` and the provisioning script in `scripts/`.
+
+Run the cross-domain demo:
+
+```bash
+python -m src.client.enterprise_demo
+```
+
+Run the tests:
+
+```bash
+python -m pytest tests/ -v
+```
+
+See [Day 2 Implementation](docs/AI-A04-Day2-Implementation.md)
+for architecture, security decisions and limitations.
