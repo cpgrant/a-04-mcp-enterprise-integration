@@ -159,6 +159,19 @@ DeepAIMind — https://deepaimind.com
 
 ---
 
+
+## Architecture Infographics
+
+### AI-A04-1 — MCP Architecture Foundation
+
+![MCP Architecture Foundation](infographics/AI-A04-1-MCP-Architecture-Foundation.png)
+
+### AI-A04-2 — Enterprise Integration & Governance
+
+![Enterprise Integration and Governance](infographics/AI-A04-2-Enterprise-Integration-Governance.png)
+
+---
+
 ## Day 2 — Enterprise Integration
 
 Day 2 extends the MCP foundation with PostgreSQL-backed
