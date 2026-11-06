@@ -155,6 +155,15 @@ DeepAIMind — https://deepaimind.com
 ---
 
 
+## Comprehensive Technical Project Report
+
+A detailed account of the four-day implementation, including
+architecture, source code, engineering decisions, testing,
+performance benchmarks, governance and lessons learned.
+
+- [Read the Comprehensive Technical Report](docs/reports/AI-A04-Comprehensive-Technical-Project-Report.md)
+- [Download the Word Report](docs/reports/AI-A04-Comprehensive-Technical-Project-Report.docx)
+
 ## Complete Architecture Report
 
 [**AI-A04 — Complete Architecture Report**](docs/AI-A04-Complete-Architecture-Report.md)
