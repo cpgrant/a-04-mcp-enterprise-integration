@@ -123,15 +123,10 @@ The docs/adr directory contains decisions covering:
 4. Server-side authorization
 5. Audit and observability
 
-## Day 2 Roadmap
+## Day 2 Implementation
 
-- ERP, CRM and finance adapters
-- Database-backed enterprise data
-- Structured tool results
-- Server-side authorization
-- Input validation
-- Audit logging and error handling
-- Expanded integration and security tests
+Day 2 delivered PostgreSQL-backed CRM, ERP and Finance integration,
+nine MCP tools, local authorization and audit logging.
 
 ## Future Integration
 
@@ -144,12 +139,10 @@ AI-A04 is intended to support:
 
 ## Status
 
-**Day 1: MCP foundation implemented and tested.**
-
-Four automated tests passed during Day 1 validation.
-
-Enterprise adapters and governance controls are
-planned for Day 2.
+- Day 1: MCP foundation complete.
+- Day 2: Enterprise integration and governance complete.
+- Day 3: MCP-enabled assessment agent validated (41 tests passing).
+- Day 4: Operational validation planned.
 
 ## Author
 
@@ -220,3 +213,39 @@ python -m pytest tests/ -v
 
 See [Day 2 Implementation](docs/AI-A04-Day2-Implementation.md)
 for architecture, security decisions and limitations.
+
+
+---
+
+## Day 3 — Agent Consumption & Interoperability
+
+Day 3 introduces a reusable MCP client and a deterministic
+enterprise assessment agent.
+
+### Capabilities
+
+- MCP tool discovery and invocation
+- Structured assessment requests and evidence
+- Cross-domain CRM, ERP and Finance analysis
+- Financial exposure observations
+- Evidence-backed recommendations
+- Completed, partial and failed execution states
+- Tool failure and transport failure handling
+- 41 passing automated tests
+
+### Run the assessment agent
+
+```bash
+python -m src.agents.demo
+```
+
+### Run automated tests
+
+```bash
+python -m pytest tests/ -q
+```
+
+See [Day 3 Implementation](docs/AI-A04-Day3-Implementation.md).
+
+The current agent follows a deterministic execution plan.
+LLM-driven tool selection is planned for future work.
