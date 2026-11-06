@@ -141,8 +141,10 @@ AI-A04 is intended to support:
 
 - Day 1: MCP foundation complete.
 - Day 2: Enterprise integration and governance complete.
-- Day 3: MCP-enabled assessment agent validated (41 tests passing).
-- Day 4: Operational validation planned.
+- Day 3: MCP-enabled enterprise assessment agent complete.
+- Day 4: Operational validation and observability complete.
+- Final validation: 56 automated tests and 5/5 acceptance checks passed.
+- Project status: Complete.
 
 ## Author
 
@@ -265,3 +267,56 @@ See [Day 3 Implementation](docs/AI-A04-Day3-Implementation.md).
 
 The current agent follows a deterministic execution plan.
 LLM-driven tool selection is planned for future work.
+
+
+---
+
+## Day 4 — Operational Validation & Observability
+
+Day 4 completes the AI-A04 architecture prototype with
+structured observability, performance measurement,
+security validation and final acceptance testing.
+
+### Implementation highlights
+
+- Typed observability event contracts
+- Assessment and trace correlation identifiers
+- MCP tool execution timing
+- Assessment lifecycle instrumentation
+- Asynchronous correlation-context isolation
+- Reproducible performance benchmarking
+- PostgreSQL read-only privilege verification
+- Final project acceptance validation
+
+### Validation results
+
+| Metric | Result |
+|---|---:|
+| Automated tests | 56 passed |
+| Acceptance checks | 5/5 passed |
+| Median assessment latency | 594.41 ms |
+| Median MCP startup latency | 496.10 ms |
+| Median combined tool latency | 21.65 ms |
+
+The measurements are from ten local benchmark runs after
+two warm-up runs. They are not production performance guarantees.
+
+### Run the operational validation
+
+```bash
+python -m pytest tests/ -q
+python -m scripts.benchmark_day4
+python -m scripts.validate_project
+```
+
+### Documentation and evidence
+
+- [Day 4 Implementation](docs/AI-A04-Day4-Implementation.md)
+- [Complete Architecture Report](docs/AI-A04-Complete-Architecture-Report.md)
+- [Performance Benchmark](results/day4_benchmark.json)
+- [Acceptance Results](results/day4_acceptance.json)
+
+### Architecture infographic
+
+![AI-A04-4 — Operational Validation & Observability](infographics/AI-A04-4-Operational-Validation-Observability.png)
+
