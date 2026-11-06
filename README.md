@@ -163,6 +163,10 @@ DeepAIMind — https://deepaimind.com
 
 ![Enterprise Integration and Governance](infographics/AI-A04-2-Enterprise-Integration-Governance.png)
 
+### AI-A04-3 — Agent Consumption & Interoperability
+
+![Agent Consumption & Interoperability](infographics/AI-A04-3-Agent-Consumption-Interoperability.png)
+
 ---
 
 ## Day 2 — Enterprise Integration
