@@ -7,11 +7,11 @@ date: '6 November 2026'
 
 # AI-A04 — MCP & Enterprise Integration
 
-**Comprehensive Technical Project Report**  
-**Scope:** Architecture foundation, enterprise adapters, agent consumption, governance, observability and operational validation  
-**Repository:** <https://github.com/cpgrant/a-04-mcp-enterprise-integration>  
-**Baseline:** `main`, commit `12b75f5` (6 November 2026)  
-**Document status:** Consolidated technical retrospective, prepared from the published repository and the recorded project execution.  
+**Comprehensive Technical Project Report**
+**Scope:** Architecture foundation, enterprise adapters, agent consumption, governance, observability and operational validation
+**Repository:** <https://github.com/cpgrant/a-04-mcp-enterprise-integration>
+**Baseline:** `main`, commit `12b75f5` (6 November 2026)
+**Document status:** Consolidated technical retrospective, prepared from the published repository and the recorded project execution.
 **Classification:** Public portfolio documentation; all demonstration business data is synthetic.
 
 \newpage
@@ -720,10 +720,10 @@ The final 56-test suite and five acceptance checks establish a successful, bound
 
 ## 13.3 GitHub references
 
-Repository: <https://github.com/cpgrant/a-04-mcp-enterprise-integration>  
-Architecture summary: <https://github.com/cpgrant/a-04-mcp-enterprise-integration/blob/main/docs/AI-A04-Complete-Architecture-Report.md>  
-Day 4 benchmark: <https://github.com/cpgrant/a-04-mcp-enterprise-integration/blob/main/results/day4_benchmark.json>  
-Day 4 acceptance: <https://github.com/cpgrant/a-04-mcp-enterprise-integration/blob/main/results/day4_acceptance.json>  
+Repository: <https://github.com/cpgrant/a-04-mcp-enterprise-integration>
+Architecture summary: <https://github.com/cpgrant/a-04-mcp-enterprise-integration/blob/main/docs/AI-A04-Complete-Architecture-Report.md>
+Day 4 benchmark: <https://github.com/cpgrant/a-04-mcp-enterprise-integration/blob/main/results/day4_benchmark.json>
+Day 4 acceptance: <https://github.com/cpgrant/a-04-mcp-enterprise-integration/blob/main/results/day4_acceptance.json>
 Final documented README commit: `12b75f5`.
 
 # 14. Conclusion
