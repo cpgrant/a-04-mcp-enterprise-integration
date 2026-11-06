@@ -1,0 +1,150 @@
+{
+  "project": "AI-A04",
+  "benchmark": "Day 4 enterprise assessment",
+  "timestamp": "2026-11-06T16:17:21.456305+00:00",
+  "warmups": 2,
+  "measured_runs": 10,
+  "customer": "synthetic C001",
+  "summary": {
+    "assessment_ms": {
+      "min_ms": 584.9088359991583,
+      "median_ms": 594.414888000756,
+      "p95_ms": 606.6296489989327,
+      "max_ms": 606.6296489989327,
+      "mean_ms": 595.3362788999584
+    },
+    "startup_ms": {
+      "min_ms": 485.69246400074917,
+      "median_ms": 496.1000370003603,
+      "p95_ms": 505.5816100011725,
+      "max_ms": 505.5816100011725,
+      "mean_ms": 496.55985460030934
+    },
+    "discovery_ms": {
+      "min_ms": 1.4348559998325072,
+      "median_ms": 1.5924690005704178,
+      "p95_ms": 1.86224599929119,
+      "max_ms": 1.86224599929119,
+      "mean_ms": 1.589849600168236
+    },
+    "tool_total_ms": {
+      "min_ms": 19.938309998906334,
+      "median_ms": 21.650911998222,
+      "p95_ms": 22.0159260006767,
+      "max_ms": 22.0159260006767,
+      "mean_ms": 21.51267469944287
+    }
+  },
+  "runs": [
+    {
+      "assessment_ms": 595.324691001224,
+      "startup_ms": 494.5717530008551,
+      "discovery_ms": 1.4348559998325072,
+      "tool_total_ms": 21.63777699752245,
+      "tool_calls": {
+        "get_customer_db": 8.292838998386287,
+        "get_customer_orders_db": 6.678261999695678,
+        "get_customer_financial_summary_db": 6.666675999440486
+      }
+    },
+    {
+      "assessment_ms": 591.3971009995294,
+      "startup_ms": 491.94818799878703,
+      "discovery_ms": 1.467275000322843,
+      "tool_total_ms": 21.370510001361254,
+      "tool_calls": {
+        "get_customer_db": 8.061672999247094,
+        "get_customer_orders_db": 6.748903000698192,
+        "get_customer_financial_summary_db": 6.559934001415968
+      }
+    },
+    {
+      "assessment_ms": 593.5050850002881,
+      "startup_ms": 495.1989860001049,
+      "discovery_ms": 1.5171049999480601,
+      "tool_total_ms": 22.0159260006767,
+      "tool_calls": {
+        "get_customer_db": 8.144650999383884,
+        "get_customer_orders_db": 7.187670000348589,
+        "get_customer_financial_summary_db": 6.683605000944226
+      }
+    },
+    {
+      "assessment_ms": 602.1158580006158,
+      "startup_ms": 500.7732180001767,
+      "discovery_ms": 1.4740500009793323,
+      "tool_total_ms": 21.85457600353402,
+      "tool_calls": {
+        "get_customer_db": 8.489412000926677,
+        "get_customer_orders_db": 6.750861000909936,
+        "get_customer_financial_summary_db": 6.614303001697408
+      }
+    },
+    {
+      "assessment_ms": 606.6296489989327,
+      "startup_ms": 505.5816100011725,
+      "discovery_ms": 1.6479000005347189,
+      "tool_total_ms": 21.55906499865523,
+      "tool_calls": {
+        "get_customer_db": 8.31137699969986,
+        "get_customer_orders_db": 6.611197999518481,
+        "get_customer_financial_summary_db": 6.63648999943689
+      }
+    },
+    {
+      "assessment_ms": 596.7922910003836,
+      "startup_ms": 497.0010880006157,
+      "discovery_ms": 1.5377540003100876,
+      "tool_total_ms": 21.866799999770592,
+      "tool_calls": {
+        "get_customer_db": 8.438291999482317,
+        "get_customer_orders_db": 6.707025999276084,
+        "get_customer_financial_summary_db": 6.721482001012191
+      }
+    },
+    {
+      "assessment_ms": 599.4625580005959,
+      "startup_ms": 499.4256440004392,
+      "discovery_ms": 1.6560159983782796,
+      "tool_total_ms": 21.859762999156374,
+      "tool_calls": {
+        "get_customer_db": 8.121590999508044,
+        "get_customer_orders_db": 6.902561000970309,
+        "get_customer_financial_summary_db": 6.835610998678021
+      }
+    },
+    {
+      "assessment_ms": 592.5728819984215,
+      "startup_ms": 491.25126100079797,
+      "discovery_ms": 1.86224599929119,
+      "tool_total_ms": 21.35997299592418,
+      "tool_calls": {
+        "get_customer_db": 8.22471099854738,
+        "get_customer_orders_db": 6.585821998669417,
+        "get_customer_financial_summary_db": 6.549439998707385
+      }
+    },
+    {
+      "assessment_ms": 590.6538380004349,
+      "startup_ms": 504.154333999395,
+      "discovery_ms": 1.6471840008307481,
+      "tool_total_ms": 19.938309998906334,
+      "tool_calls": {
+        "get_customer_db": 7.7621660002478166,
+        "get_customer_orders_db": 5.992135000269627,
+        "get_customer_financial_summary_db": 6.18400899838889
+      }
+    },
+    {
+      "assessment_ms": 584.9088359991583,
+      "startup_ms": 485.69246400074917,
+      "discovery_ms": 1.654110001254594,
+      "tool_total_ms": 21.66404699892155,
+      "tool_calls": {
+        "get_customer_db": 8.228716000303393,
+        "get_customer_orders_db": 6.727763999151648,
+        "get_customer_financial_summary_db": 6.707566999466508
+      }
+    }
+  ]
+}

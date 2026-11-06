@@ -153,6 +153,14 @@ DeepAIMind — https://deepaimind.com
 ---
 
 
+## Complete Architecture Report
+
+[**AI-A04 — Complete Architecture Report**](docs/AI-A04-Complete-Architecture-Report.md)
+
+The report covers the four-day implementation, architecture
+decisions, governance controls, agent integration, observability,
+56 automated tests, performance findings and final acceptance.
+
 ## Architecture Infographics
 
 ### AI-A04-1 — MCP Architecture Foundation
@@ -166,6 +174,10 @@ DeepAIMind — https://deepaimind.com
 ### AI-A04-3 — Agent Consumption & Interoperability
 
 ![Agent Consumption & Interoperability](infographics/AI-A04-3-Agent-Consumption-Interoperability.png)
+
+### AI-A04-4 — Operational Validation & Observability
+
+![Operational Validation & Observability](infographics/AI-A04-4-Operational-Validation-Observability.png)
 
 ---
 

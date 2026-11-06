@@ -1,6 +1,7 @@
 """Deterministic, evidence-backed enterprise assessment agent."""
 
 from datetime import date
+from time import perf_counter
 from decimal import Decimal
 
 from src.agents.contracts import (
@@ -10,6 +11,17 @@ from src.agents.contracts import (
     ToolEvidence,
 )
 from src.client.enterprise_mcp import EnterpriseMCPClient
+
+from src.observability.context import correlation_scope
+from src.observability.emitter import emit_event
+from src.observability.events import (
+    EventOutcome,
+    EventType,
+    ObservabilityEvent,
+    new_assessment_id,
+    new_trace_id,
+)
+
 
 
 REQUIRED_TOOLS = (
@@ -180,29 +192,78 @@ async def _assess_connected(
 
 
 
+
 async def assess_enterprise(
     request: AssessmentRequest,
     role: str = "reader",
 ) -> EnterpriseAssessment:
-    """Assess an enterprise with controlled transport failures."""
+    """Run and observe one enterprise assessment."""
 
-    # Invalid requests must still raise validation errors.
     date.fromisoformat(request.as_of)
 
-    try:
-        return await _assess_connected(request, role=role)
+    trace_id = new_trace_id()
+    assessment_id = new_assessment_id()
+    started = perf_counter()
 
-    except (OSError, TimeoutError, ConnectionError, ExceptionGroup) as exc:
-        return EnterpriseAssessment(
-            customer_code=request.customer_code,
-            customer_name="Unknown",
-            as_of=request.as_of,
-            status="failed",
-            observations=[],
-            recommendations=[],
-            evidence=[],
-            errors=[
-                "MCP connection failed: "
-                + type(exc).__name__
-            ],
+    def record(event_type, outcome, duration_ms=None, error_type=None):
+        emit_event(
+            ObservabilityEvent(
+                trace_id=trace_id,
+                assessment_id=assessment_id,
+                event_type=event_type,
+                outcome=outcome,
+                component="assessment_agent",
+                operation="assess_enterprise",
+                duration_ms=duration_ms,
+                error_type=error_type,
+            )
         )
+
+    record(EventType.ASSESSMENT_STARTED, EventOutcome.STARTED)
+
+    with correlation_scope(trace_id, assessment_id):
+        try:
+            result = await _assess_connected(request, role=role)
+
+        except (
+            OSError,
+            TimeoutError,
+            ConnectionError,
+            ExceptionGroup,
+        ) as exc:
+            result = EnterpriseAssessment(
+                customer_code=request.customer_code,
+                customer_name="Unknown",
+                as_of=request.as_of,
+                status="failed",
+                observations=[],
+                recommendations=[],
+                evidence=[],
+                errors=[
+                    "MCP connection failed: "
+                    + type(exc).__name__
+                ],
+            )
+
+        except Exception as exc:
+            record(
+                EventType.ASSESSMENT_COMPLETED,
+                EventOutcome.FAILED,
+                duration_ms=(perf_counter() - started) * 1000,
+                error_type=type(exc).__name__,
+            )
+            raise
+
+    outcome = {
+        "completed": EventOutcome.SUCCESS,
+        "partial": EventOutcome.PARTIAL,
+        "failed": EventOutcome.FAILED,
+    }[result.status]
+
+    record(
+        EventType.ASSESSMENT_COMPLETED,
+        outcome,
+        duration_ms=(perf_counter() - started) * 1000,
+    )
+
+    return result
